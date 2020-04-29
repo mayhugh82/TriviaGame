@@ -6,7 +6,7 @@ html {
 
 .bg {
   /* The image used */
-  background-image: url("../images/hogwarts.jpg");
+  background-image: url("../images/hgexpress.jpg");
 
   /* Full height */
   height: 100%;
@@ -15,4 +15,11 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+img {
+  width: 45%;
+
+  margin-left: 30%;
+ 
 }
