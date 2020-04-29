@@ -18,8 +18,16 @@ html {
 }
 
 img {
+  position: absolute;
+  text-emphasis: center;
+  top: 15%;
   width: 45%;
-
   margin-left: 30%;
- 
 }
+
+h1 {
+  position: absolute;
+  top: 26%;
+  left:40%;
+  z-index: 1;
+ }
