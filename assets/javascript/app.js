@@ -7,9 +7,7 @@ $(document).ready(function () {
   var unanswered = 0;
   
 
-  const questionContainerElement = document.getElementById(
-    "question-container"
-  );
+  const questionContainerElement = document.getElementById("question-container");
   const questionElement = document.getElementById("question");
   const answerButtonsElement = document.getElementById("answer-buttons");
   let shuffledQuestions, currentQuestionIndex;
@@ -26,11 +24,14 @@ $(document).ready(function () {
     setNextQuestion();
   });
 
+  //shuffles which question goes first
   function setNextQuestion() {
     resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
   }
 
+
+//not completely sure what is happening here
   function showQuestion(question) {
     questionElement.innerText = question.question;
     question.answers.forEach((answer) => {
@@ -44,13 +45,14 @@ $(document).ready(function () {
       answerButtonsElement.appendChild(button);
     });
   }
-
+// clears out "Question" and "Answer 1" adds new answers
   function resetState() {
     while (answerButtonsElement.firstChild) {
       answerButtonsElement.removeChild(answerButtonsElement.firstChild);
     }
   }
 
+  // adds answers to the quesion-container for user to select from
   function selectAnswer(e) {
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
