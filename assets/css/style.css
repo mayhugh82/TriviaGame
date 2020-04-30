@@ -28,24 +28,24 @@ img {
 h1 {
   position: absolute;
   top: 20%;
-  left:34%;
+  left: 34%;
   z-index: 1;
-  font-family: "HarryP",'Times New Roman', Times, serif;
+  font-family: "HarryP", "Times New Roman", Times, serif;
   font-size: 50px;
   color: rgba(124, 13, 13, 0.76);
- }
+}
 
- @font-face{
-font-family: "HarryP";
-src: url("../fonts/HARRYP__.TTF");
+@font-face {
+  font-family: "HarryP";
+  src: url("../fonts/HARRYP__.TTF");
 }
 
 #start {
- position: absolute;
+  position: absolute;
   top: 45%;
-  left:37%;
+  left: 37%;
   z-index: 1;
-  font-family: "HarryP",'Times New Roman', Times, serif;
+  font-family: "HarryP", "Times New Roman", Times, serif;
   font-size: 80px;
   color: rgba(124, 13, 13, 0.76);
   padding: 10px 50px;
@@ -57,11 +57,11 @@ src: url("../fonts/HARRYP__.TTF");
 #time-left {
   position: absolute;
   top: 30%;
-  left:40%;
+  left: 40%;
   z-index: 1;
-  font-family: "HarryP",'Times New Roman', Times, serif;
+  font-family: "HarryP", "Times New Roman", Times, serif;
   font-size: 20px;
-  color:black;
+  color: black;
 }
 
 .btn-grid {
@@ -72,19 +72,29 @@ src: url("../fonts/HARRYP__.TTF");
 }
 
 .btn {
-border-radius: 5px;
-padding: 5px 10px;
-outline: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  outline: none;
 }
 
-.btn:hover{
+.btn:hover {
   border-color: black;
 }
 
 #question-container {
-width: 20%;
-background-color: white;
-border-radius: 5px;
-padding: 10px;
-box-shadow: 0 0 10px 2px;
+  width: 20%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px 2px;
+  position: absolute;
+  top: 48%;
+  left: 33%;
+  z-index: 1;
+  font-family: "HarryP", "Times New Roman", Times, serif;
+  font-size: 20px;
+}
+
+.hide {
+  display: none;
 }

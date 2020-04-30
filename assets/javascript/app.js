@@ -2,21 +2,27 @@ $(document).ready(function() {
 
 var number = 10
 var intervalId;
+const questionContainerElement = document.getElementById ('question-container')
 
 //game starts when start button clicked
 $("#start").on("click", function () {
 $("#start").hide();
-$("#question-container").remove('hide')
+questionContainerElement.classList.remove('hide');
+
 
 //Clearing the intervalId prior to setting our new intervalId will not allow multiple instances.
 clearInterval(intervalId);
 intervalId = setInterval(decrement, 1000);
 
-
-
-
-
 });
+
+function setNextQuestion() {
+
+}
+
+function selectAnswer() {
+
+}
 
 function decrement() {
   //  Decrease number by one.
