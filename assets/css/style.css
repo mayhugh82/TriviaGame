@@ -57,10 +57,10 @@ h1 {
 #time-left {
   position: absolute;
   top: 30%;
-  left: 40%;
+  left: 36%;
   z-index: 1;
   font-family: "HarryP", "Times New Roman", Times, serif;
-  font-size: 20px;
+  font-size: 40px;
   color: black;
 }
 

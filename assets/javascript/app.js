@@ -1,9 +1,15 @@
 $(document).ready(function () {
-    
   var number = 10;
   var intervalId;
+  // players scores
+  var correctAnswers = 0;
+  var incorrectAnswers = 0;
+  var unanswered = 0;
+  
 
-  const questionContainerElement = document.getElementById("question-container");
+  const questionContainerElement = document.getElementById(
+    "question-container"
+  );
   const questionElement = document.getElementById("question");
   const answerButtonsElement = document.getElementById("answer-buttons");
   let shuffledQuestions, currentQuestionIndex;
@@ -18,7 +24,6 @@ $(document).ready(function () {
     currentQuestionIndex = 0;
     questionContainerElement.classList.remove("hide");
     setNextQuestion();
-    
   });
 
   function setNextQuestion() {
@@ -42,7 +47,7 @@ $(document).ready(function () {
 
   function resetState() {
     while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+      answerButtonsElement.removeChild(answerButtonsElement.firstChild);
     }
   }
 
@@ -53,20 +58,6 @@ $(document).ready(function () {
     Array.from(answerButtonsElement.children).forEach((button) => {
       setStatusClass(button, button.dataset.correct);
     });
-  }
-
-  function setStatusClass(element, correct) {
-    clearStatusClass(element);
-    if (correct) {
-      element.classList.add("correct");
-    } else {
-      element.classList.add("wrong")
-    }
-  }
-
-  function clearStatusClass(element) {
-    element.classList.remove("correct");
-    element.classList.remove("wrong");
   }
 
   const questions = [
@@ -103,7 +94,10 @@ $(document).ready(function () {
     {
       question: "What wizarding sport to they play on brooms?",
       answers: [
-        { text: "Clean the pantry", correct: false },
+        {
+          text: "Clean the pantry",
+          correct: false,
+        },
         { text: "Briggam", correct: false },
         { text: "Flying Tennis", correct: false },
         { text: "Quidditch", correct: true },
@@ -123,10 +117,22 @@ $(document).ready(function () {
     {
       question: "Who are Harry's best friends?",
       answers: [
-        { text: "Fred and George", correct: false },
-        { text: "Thelma and Louise", correct: false },
-        { text: "He doesn't have friends", correct: false },
-        { text: "Ron and Hermione", correct: true },
+        {
+          text: "Fred and George",
+          correct: false,
+        },
+        {
+          text: "Thelma and Louise",
+          correct: false,
+        },
+        {
+          text: "He doesn't have friends",
+          correct: false,
+        },
+        {
+          text: "Ron and Hermione",
+          correct: true,
+        },
       ],
     },
 
@@ -135,7 +141,10 @@ $(document).ready(function () {
         "Which of the following is and actual spell from the wizarding world?",
       answers: [
         { text: "Abracadabra", correct: false },
-        { text: "Wingardium Leviosa", correct: true },
+        {
+          text: "Wingardium Leviosa",
+          correct: true,
+        },
         { text: "Poof", correct: false },
         { text: "Lorem ipsum", correct: false },
       ],
