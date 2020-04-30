@@ -27,14 +27,29 @@ img {
 
 h1 {
   position: absolute;
-  top: 26%;
-  left:35%;
+  top: 20%;
+  left:34%;
   z-index: 1;
   font-family: "HarryP",'Times New Roman', Times, serif;
   font-size: 50px;
+  color: rgba(124, 13, 13, 0.76);
  }
 
  @font-face{
 font-family: "HarryP";
 src: url("../fonts/HARRYP__.TTF");
+}
+
+#start {
+ position: absolute;
+  top: 45%;
+  left:37%;
+  z-index: 1;
+  font-family: "HarryP",'Times New Roman', Times, serif;
+  font-size: 80px;
+  color: rgba(124, 13, 13, 0.76);
+  padding: 10px 50px;
+  background-color: rgba(206, 153, 7, 0.726);
+  border-radius: 12px;
+  border-color: rgba(124, 13, 13, 0.76);
 }
