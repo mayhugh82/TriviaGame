@@ -7,7 +7,7 @@ var intervalId;
 $("#start").on("click", function () {
 $("#start").hide();
 
-
+//Clearing the intervalId prior to setting our new intervalId will not allow multiple instances.
 clearInterval(intervalId);
 intervalId = setInterval(decrement, 1000);
 
@@ -20,15 +20,12 @@ intervalId = setInterval(decrement, 1000);
 function decrement() {
   //  Decrease number by one.
   number--;
-
-  //  Show the number in the #show-number tag.
+  //  Show the number in the #time-left tag.
   $("#time-left").html("<h2>" +"Time Remaining "+ number + "</h2>");
-
   //  Once number hits zero...
   if (number === 0) {
     //  ...run the stop function.
     stop();
-
 $("#time-left").append("<h2>Time's Up!</h2>");
   }
 }
