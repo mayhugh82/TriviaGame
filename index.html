@@ -11,22 +11,26 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
     ></script>
     <!-- Game Logic -->
-    <script
-      type="text/javascript"
-      src="assets/javascript/app.js"
-    ></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <div class="bg">
       <div class="inner">
-        
-          <h1 id="title">Harry Potter Trivia!</h1>
-          <img src="/assets/images/platform.jpg" alt="hp parchment" />
-          <button id="start">Start</button>
-          <div id="time-left"></div>
-        
+        <h1 id="title">Harry Potter Trivia!</h1>
+        <img src="/assets/images/platform.jpg" alt="hp parchment" />
+        <button id="start">Start</button>
+        <div id="time-left"></div>
+        <div id="question-container" class="hide">
+          <div id="question">Question</div>
+          <div id="answer-buttons" class="btn-grid">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
+        </div>
       </div>
     </div>
   </body>

@@ -63,3 +63,28 @@ src: url("../fonts/HARRYP__.TTF");
   font-size: 20px;
   color:black;
 }
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.btn {
+border-radius: 5px;
+padding: 5px 10px;
+outline: none;
+}
+
+.btn:hover{
+  border-color: black;
+}
+
+#question-container {
+width: 20%;
+background-color: white;
+border-radius: 5px;
+padding: 10px;
+box-shadow: 0 0 10px 2px;
+}

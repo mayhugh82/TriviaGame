@@ -6,6 +6,7 @@ var intervalId;
 //game starts when start button clicked
 $("#start").on("click", function () {
 $("#start").hide();
+$("#question-container").remove('hide')
 
 //Clearing the intervalId prior to setting our new intervalId will not allow multiple instances.
 clearInterval(intervalId);
