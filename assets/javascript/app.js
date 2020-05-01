@@ -1,11 +1,11 @@
 $(document).ready(function () {
-  var number = 10;
+  var number = 5;
   var intervalId;
   // players scores
   var correctAnswers = 0;
   var incorrectAnswers = 0;
   var unanswered = 0;
-  
+
 
   const questionContainerElement = document.getElementById("question-container");
   const questionElement = document.getElementById("question");
@@ -22,7 +22,7 @@ $(document).ready(function () {
     currentQuestionIndex = 0;
     questionContainerElement.classList.remove("hide");
     setNextQuestion();
-  });
+      });
 
   //shuffles which question goes first
   function setNextQuestion() {
@@ -30,9 +30,11 @@ $(document).ready(function () {
     showQuestion(shuffledQuestions[currentQuestionIndex]);
   }
 
-
-//not completely sure what is happening here
+  //not completely sure what is happening here
   function showQuestion(question) {
+    if (!question) {
+        return;
+    }
     questionElement.innerText = question.question;
     question.answers.forEach((answer) => {
       const button = document.createElement("button");
@@ -44,8 +46,9 @@ $(document).ready(function () {
       button.addEventListener("click", selectAnswer);
       answerButtonsElement.appendChild(button);
     });
+    currentQuestionIndex++;
   }
-// clears out "Question" and "Answer 1" adds new answers
+  // clears out "Question" and "Answer 1" adds new answers
   function resetState() {
     while (answerButtonsElement.firstChild) {
       answerButtonsElement.removeChild(answerButtonsElement.firstChild);
@@ -56,10 +59,10 @@ $(document).ready(function () {
   function selectAnswer(e) {
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
-    setStatusClass(document.body, correct);
-    Array.from(answerButtonsElement.children).forEach((button) => {
-      setStatusClass(button, button.dataset.correct);
-    });
+    // setStatusClass(document.body, correct);
+    // Array.from(answerButtonsElement.children).forEach((button) => {
+    //   setStatusClass(button, button.dataset.correct);
+    // });
   }
 
   const questions = [
@@ -94,7 +97,7 @@ $(document).ready(function () {
     },
 
     {
-      question: "What wizarding sport to they play on brooms?",
+      question: "What wizarding sport is played on brooms?",
       answers: [
         {
           text: "Clean the pantry",
@@ -153,9 +156,20 @@ $(document).ready(function () {
     },
   ];
 
+  function showAnswerPage(){
+      $('#question-container').hide();
+      var test = $('<h1></h1>');
+      test.text("hello");
+    $('.inner').append(test);
+    answerPage()
+  }
+
   function decrement() {
     //  Decrease number by one.
     number--;
+    if (number % 5 === 0) {
+      showAnswerPage();
+    }
     //  Show the number in the #time-left tag.
     $("#time-left").html("<h2>" + "Time Remaining " + number + "</h2>");
     //  Once number hits zero...
@@ -165,6 +179,14 @@ $(document).ready(function () {
       $("#time-left").append("<h2>Time's Up!</h2>");
     }
   }
+
+  function answerPage() {
+    //  Decrease number by one.
+    number--;
+    if (number % 5 === 0) {
+       //showAnswerPage();
+    }
+    }
 
   function stop() {
     //  Clears our intervalId
