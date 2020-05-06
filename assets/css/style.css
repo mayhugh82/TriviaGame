@@ -43,7 +43,7 @@ h1 {
 #start, #reset {
   position: absolute;
   top: 30%;
-  left: 25%;
+  left: 20%;
   z-index: 1;
   font-family: "HarryP", "Times New Roman", Times, serif;
   font-size: 80px;
@@ -60,7 +60,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto);
   gap: 10px;
-  margin: 20px 80px;
+  margin: 20px 40px;
   border-radius: 5px;
   padding: 5px 10px;
   outline: none;
