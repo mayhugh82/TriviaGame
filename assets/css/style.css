@@ -28,10 +28,10 @@ img {
 h1 {
   position: absolute;
   top: 20%;
-  left: 34%;
+  left: 36%;
   z-index: 1;
   font-family: "HarryP", "Times New Roman", Times, serif;
-  font-size: 50px;
+  font-size: 58px;
   color: rgba(124, 13, 13, 0.76);
 }
 
@@ -40,10 +40,10 @@ h1 {
   src: url("../fonts/HARRYP__.TTF");
 }
 
-#start {
+#start, #reset {
   position: absolute;
-  top: 45%;
-  left: 37%;
+  top: 30%;
+  left: 25%;
   z-index: 1;
   font-family: "HarryP", "Times New Roman", Times, serif;
   font-size: 80px;
@@ -54,46 +54,37 @@ h1 {
   border-color: rgba(124, 13, 13, 0.76);
 }
 
-#time-left {
-  position: absolute;
-  top: 30%;
-  left: 36%;
-  z-index: 1;
-  font-family: "HarryP", "Times New Roman", Times, serif;
-  font-size: 40px;
-  color: black;
-}
 
-.btn-grid {
+
+.answer-button {
   display: grid;
   grid-template-columns: repeat(auto);
   gap: 10px;
-  margin: 20px 0;
-}
-
-.btn {
+  margin: 20px 100px;
   border-radius: 5px;
   padding: 5px 10px;
   outline: none;
+  border-color: black;
+  background-color: transparent;
+  font-family: "HarryP", "Times New Roman", Times, serif;
+  font-size: 40px;
+  text-align: center;
 }
 
-.btn:hover {
-  border-color: black;
-} 
 
- #question-container {
+
+ #subwrapper {
   width: 20%;
+  height: 50%;
   border-radius: 5px;
   padding: 10px;
   box-shadow: 0 0 10px 2px;
   position: absolute;
-  top: 48%;
+  top: 32%;
   left: 33%;
   z-index: 1;
   font-family: "HarryP", "Times New Roman", Times, serif;
   font-size: 30px;
 }
 
-.hide {
-  display: none;
-} 
+

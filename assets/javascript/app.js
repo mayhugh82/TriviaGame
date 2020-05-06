@@ -65,7 +65,7 @@ $(document).ready(function () {
       question:
         "Which of the following is and actual spell from the wizarding world?",
       answers: ["Abracadabra", "Wingardium Leviosa", "Poof", "Lorem ipsum"],
-      correctAnswer: "JK Rowling",
+      correctAnswer: "Wingardium Leviosa",
       image: "assets/images/spell.jpg",
     },
   ];
@@ -75,7 +75,7 @@ $(document).ready(function () {
   var game = {
     questions: questions,
     currentQuestion: 0,
-    counter: 30,
+    counter: 5,
     correct: 0,
     incorrect: 0,
     unanswered: 0,
@@ -151,7 +151,7 @@ $(document).ready(function () {
       console.log("you got it");
       clearInterval(timer);
       game.correct++;
-      $("#subwrapper").html("<h2>YOU GOT IT! 10 Points for GRYFFINDOR!</h2>");
+      $("#subwrapper").html("<h2>YOU GOT IT! 1 Point for GRYFFINDOR!</h2>");
       if (game.currentQuestion === questions.length - 1) {
         setTimeout(game.results, 5 * 1000);
       } else {
