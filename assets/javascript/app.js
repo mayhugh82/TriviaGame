@@ -109,9 +109,25 @@ $(document).ready(function () {
       },
       answeredCorrectly: function(){
           console.log("you got it");
+          clearInterval(timer);
+          game.correct++;
+          $("#subwrapper").html('<h2>YOU GOT IT! 10 Points for GRYFFINDOR!</h2>');
+          if(game.currentQuestion===questions.length-1){
+            setTimeout(game.results,5*1000);
+          }else{
+            setTimeout(game.nextQuestion,5*1000);
+          }
       },
       answeredIncorrectly: function(){
           console.log("wrong");
+           clearInterval(timer);
+          game.incorrect++;
+          $("#subwrapper").html('<h2>WRONG! You must be a MUGGLE!</h2>');
+          if(game.currentQuestion===questions.length-1){
+            setTimeout(game.results,5*1000);
+          }else{
+            setTimeout(game.nextQuestion,5*1000);
+          }
       },
       reset: function(){
 
