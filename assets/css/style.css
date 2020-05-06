@@ -31,7 +31,7 @@ h1 {
   left: 36%;
   z-index: 1;
   font-family: "HarryP", "Times New Roman", Times, serif;
-  font-size: 58px;
+  font-size: 55px;
   color: rgba(124, 13, 13, 0.76);
 }
 
@@ -60,7 +60,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto);
   gap: 10px;
-  margin: 20px 100px;
+  margin: 20px 80px;
   border-radius: 5px;
   padding: 5px 10px;
   outline: none;
