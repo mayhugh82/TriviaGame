@@ -1,197 +1,99 @@
 $(document).ready(function () {
-  var number = 5;
-  var intervalId;
-  // players scores
-  var correctAnswers = 0;
-  var incorrectAnswers = 0;
-  var unanswered = 0;
-
-
-  const questionContainerElement = document.getElementById("question-container");
-  const questionElement = document.getElementById("question");
-  const answerButtonsElement = document.getElementById("answer-buttons");
-  let shuffledQuestions, currentQuestionIndex;
-
+  
   //game starts when start button clicked
   $("#start").on("click", function () {
-    $("#start").hide();
-    //Clearing the intervalId prior to setting our new intervalId will not allow multiple instances.
-    clearInterval(intervalId);
-    intervalId = setInterval(decrement, 1000);
-    shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-    currentQuestionIndex = 0;
-    questionContainerElement.classList.remove("hide");
-    setNextQuestion();
-      });
-
-  //shuffles which question goes first
-  function setNextQuestion() {
-    resetState();
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
-  }
-
-  //not completely sure what is happening here
-  function showQuestion(question) {
-    if (!question) {
-        return;
-    }
-    questionElement.innerText = question.question;
-    question.answers.forEach((answer) => {
-      const button = document.createElement("button");
-      button.innerText = answer.text;
-      button.classList.add("btn");
-      if (answer.correct) {
-        button.dataset.correct = answer.correct;
-      }
-      button.addEventListener("click", selectAnswer);
-      answerButtonsElement.appendChild(button);
-    });
-    currentQuestionIndex++;
-  }
-  // clears out "Question" and "Answer 1" adds new answers
-  function resetState() {
-    while (answerButtonsElement.firstChild) {
-      answerButtonsElement.removeChild(answerButtonsElement.firstChild);
-    }
-  }
-
-  // adds answers to the quesion-container for user to select from
-  function selectAnswer(e) {
-    const selectedButton = e.target;
-    const correct = selectedButton.dataset.correct;
-    // setStatusClass(document.body, correct);
-    // Array.from(answerButtonsElement.children).forEach((button) => {
-    //   setStatusClass(button, button.dataset.correct);
-    // });
-  }
-
-  const questions = [
+    $("#start").remove();
+    
+  var questions = [
     {
       question: "Who wrote the Harry Potter Series?",
-      answers: [
-        { text: "JK Rowling", correct: true },
-        { text: "Stephen King", correct: false },
-        { text: "R.L. Stein", correct: false },
-        { text: "Barack Obama", correct: false },
-      ],
+      answers: ["JK Rowling", "Stephen King", "R.L. Stein", "Barack Obama"],
+      correctAnswer: "JK Rowling",
+      image: "assets/images/jk.jpg",
     },
 
     {
       question: "How many Houses does Hogwarts have?",
-      answers: [
-        { text: "1", correct: false },
-        { text: "20", correct: false },
-        { text: "4", correct: true },
-        { text: "0", correct: false },
-      ],
+      answers: ["1", "20", "4", "0"],
+      correctAnswer: "4",
+      image: "assets/images/houses.webp",
     },
 
     {
       question: "Who killed Harry's parents?",
-      answers: [
-        { text: "Snape", correct: false },
-        { text: "Voldemort", correct: true },
-        { text: "Dumbledore", correct: false },
-        { text: "Maleficent", correct: false },
-      ],
+      answers: ["Snape", "Voldemort", "Dumbledore", "Maleficent"],
+      correctAnswer: "Voldemort",
+      image: "assets/images/voldemort.webp",
     },
 
     {
       question: "What wizarding sport is played on brooms?",
-      answers: [
-        {
-          text: "Clean the pantry",
-          correct: false,
-        },
-        { text: "Briggam", correct: false },
-        { text: "Flying Tennis", correct: false },
-        { text: "Quidditch", correct: true },
-      ],
+      answers: ["Clean the pantry", "Briggam", "Flying Tennis", "Quidditch"],
+      correctAnswer: "Quidditch",
+      image: "assets/images/quidditch.jpg",
     },
 
     {
       question: "What pet animal does Harry have?",
-      answers: [
-        { text: "Frog", correct: false },
-        { text: "Owl", correct: true },
-        { text: "Elephant", correct: false },
-        { text: "Rat", correct: false },
-      ],
+      answers: ["Frog", "Owl", "Elephant", "Rat"],
+      correctAnswer: "Owl",
+      image: "assets/images/hedwig.jpg",
     },
 
     {
       question: "Who are Harry's best friends?",
       answers: [
-        {
-          text: "Fred and George",
-          correct: false,
-        },
-        {
-          text: "Thelma and Louise",
-          correct: false,
-        },
-        {
-          text: "He doesn't have friends",
-          correct: false,
-        },
-        {
-          text: "Ron and Hermione",
-          correct: true,
-        },
+        "Fred and George",
+        "Thelma and Louise",
+        "He doesn't have friends",
+        "Ron and Hermione",
       ],
+      correctAnswer: "Ron and Hermione",
+      image: "assets/images/friends.jpg",
     },
 
     {
       question:
         "Which of the following is and actual spell from the wizarding world?",
-      answers: [
-        { text: "Abracadabra", correct: false },
-        {
-          text: "Wingardium Leviosa",
-          correct: true,
-        },
-        { text: "Poof", correct: false },
-        { text: "Lorem ipsum", correct: false },
-      ],
+      answers: ["Abracadabra", "Wingardium Leviosa", "Poof", "Lorem ipsum"],
+      correctAnswer: "JK Rowling",
+      image: "assets/images/spell.jpg",
     },
   ];
 
-  function showAnswerPage(){
-      $('#question-container').hide();
-      var test = $('<h1></h1>');
-      test.text("hello");
-    $('.inner').append(test);
-    answerPage()
-  }
+  var game = {
+      questions: questions,
+      currentQuestion: 0,
+      counter: 30,
+      correct: 0,
+      incorrect: 0,
+      countdown: function(){
 
-  function decrement() {
-    //  Decrease number by one.
-    number--;
-    if (number % 5 === 0) {
-      showAnswerPage();
-    }
-    //  Show the number in the #time-left tag.
-    $("#time-left").html("<h2>" + "Time Remaining " + number + "</h2>");
-    //  Once number hits zero...
-    if (number === 0) {
-      //  ...run the stop function.
-      stop();
-      $("#time-left").append("<h2>Time's Up!</h2>");
-    }
-  }
+      },
+      loadQuestion: function(){
 
-  function answerPage() {
-    //  Decrease number by one.
-    number--;
-    if (number % 5 === 0) {
-       //showAnswerPage();
-    }
+      };
+      nextQuestion: function(){
+
+      };
+      timeUp: function(){
+
+      };
+      results: function(){
+
+      };
+      clicked: function(){
+
+      };
+      answeredCorrectly: function(){
+
+      };
+      answeredIncorrectly: function(){
+
+      };
+      reset: function(){
+        
+      }
     }
 
-  function stop() {
-    //  Clears our intervalId
-    //  We just pass the name of the interval
-    //  to the clearInterval function.
-    clearInterval(intervalId);
   }
-});
