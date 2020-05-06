@@ -1,10 +1,9 @@
 $(document).ready(function () {
-
   //game starts when start button clicked
-  $("#start").on('click', function () {
+  $("#start").on("click", function () {
     $("#start").remove();
     game.loadQuestion();
-  })
+  });
 
   $(document).on("click", ".answer-button", function (e) {
     game.clicked(e);
@@ -64,74 +63,103 @@ $(document).ready(function () {
       answers: ["Abracadabra", "Wingardium Leviosa", "Poof", "Lorem ipsum"],
       correctAnswer: "JK Rowling",
       image: "assets/images/spell.jpg",
-    }];
+    },
+  ];
 
   var timer;
 
   var game = {
-      questions: questions,
-      currentQuestion: 0,
-      counter: 30,
-      correct: 0,
-      incorrect: 0,
-      countdown: function(){
-           game.counter--;
-          $('#counter').html(game.counter);
-          if(game.counter <=0){
-          console.log("TIME UP!");
-          game.timeUp();
-          }
-        },
-      loadQuestion: function(){
-           timer = setInterval(game.countdown,1000);
-          $('#subwrapper').html('<h2>'+questions[game.currentQuestion].question+'</h2>');
-           for(var i=0;i<questions[game.currentQuestion].answers.length;i++){
-            $('#subwrapper').append('<button class="answer-button" id="button-'+i+'" data-name="'+questions[game.currentQuestion].answers[i]+'">'+questions[game.currentQuestion].answers[i]+'</button>');
-           }
-      },
-      nextQuestion: function(){
-
-      },
-      timeUp: function(){
-
-      },
-      results: function(){
-
-      },
-      clicked: function(e){
-            clearInterval(timer);
-            if($(e.target).data("name")==questions[game.currentQuestion].correctAnswer){
-                game.answeredCorrectly();
-            } else {
-              game.answeredIncorrectly();
-            }
-
-      },
-      answeredCorrectly: function(){
-          console.log("you got it");
-          clearInterval(timer);
-          game.correct++;
-          $("#subwrapper").html('<h2>YOU GOT IT! 10 Points for GRYFFINDOR!</h2>');
-          if(game.currentQuestion===questions.length-1){
-            setTimeout(game.results,5*1000);
-          }else{
-            setTimeout(game.nextQuestion,5*1000);
-          }
-      },
-      answeredIncorrectly: function(){
-          console.log("wrong");
-           clearInterval(timer);
-          game.incorrect++;
-          $("#subwrapper").html('<h2>WRONG! You must be a MUGGLE!</h2>');
-          if(game.currentQuestion===questions.length-1){
-            setTimeout(game.results,5*1000);
-          }else{
-            setTimeout(game.nextQuestion,5*1000);
-          }
-      },
-      reset: function(){
-
+    questions: questions,
+    currentQuestion: 0,
+    counter: 30,
+    correct: 0,
+    incorrect: 0,
+    countdown: function () {
+      game.counter--;
+      $("#counter").html(game.counter);
+      if (game.counter <= 0) {
+        console.log("TIME UP!");
+        game.timeUp();
       }
-    }
-
+    },
+    loadQuestion: function () {
+      timer = setInterval(game.countdown, 1000);
+      $("#subwrapper").html(
+        "<h2>" + questions[game.currentQuestion].question + "</h2>"
+      );
+      for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
+        $("#subwrapper").append(
+          '<button class="answer-button" id="button-' +
+            i +
+            '" data-name="' +
+            questions[game.currentQuestion].answers[i] +
+            '">' +
+            questions[game.currentQuestion].answers[i] +
+            "</button>"
+        );
+      }
+    },
+    nextQuestion: function () {
+      game.counter = 30;
+      $("#counter").html(game.counter);
+      game.currentQuestion++;
+      game.loadQuestion();
+    },
+    timeUp: function () {
+      clearInterval(timer);
+      $("#subwrapper").html(
+        "<h2>OUT OF TIME! Where's Hermione's time turner when you need it?!</h2>"
+      );
+      $("#subwrapper").append(
+        "<h3>The Correct Answer Was: " +
+          questions[game.currentQuestion].correctAnswer +
+          "</h3>"
+      );
+      if (game.currentQuestion === questions.length - 1) {
+        setTimeout(game.results, 5 * 1000);
+      } else {
+        setTimeout(game.nextQuestion, 5 * 1000);
+      }
+    },
+    results: function () {},
+    clicked: function (e) {
+      clearInterval(timer);
+      if (
+        $(e.target).data("name") ==
+        questions[game.currentQuestion].correctAnswer
+      ) {
+        game.answeredCorrectly();
+      } else {
+        game.answeredIncorrectly();
+      }
+    },
+    answeredCorrectly: function () {
+      console.log("you got it");
+      clearInterval(timer);
+      game.correct++;
+      $("#subwrapper").html("<h2>YOU GOT IT! 10 Points for GRYFFINDOR!</h2>");
+      if (game.currentQuestion === questions.length - 1) {
+        setTimeout(game.results, 5 * 1000);
+      } else {
+        setTimeout(game.nextQuestion, 5 * 1000);
+      }
+    },
+    answeredIncorrectly: function () {
+      console.log("wrong");
+      clearInterval(timer);
+      game.incorrect++;
+      $("#subwrapper").html("<h2>WRONG! You must be a MUGGLE!</h2>");
+      $("#subwrapper").append(
+        "<h3>The Correct Answer Was: " +
+          questions[game.currentQuestion].correctAnswer +
+          "</h3>"
+      );
+      if (game.currentQuestion === questions.length - 1) {
+        setTimeout(game.results, 5 * 1000);
+      } else {
+        setTimeout(game.nextQuestion, 5 * 1000);
+      }
+    },
+    reset: function () {},
+  };
 });
