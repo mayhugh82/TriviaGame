@@ -1,10 +1,15 @@
 $(document).ready(function () {
-  
+
   //game starts when start button clicked
-  $("#start").on("click", function () {
+  $("#start").on('click', function () {
     $("#start").remove();
     game.loadQuestion();
   })
+
+  $(document).on("click", ".answer-button", function (e) {
+    game.clicked(e);
+  });
+
   var questions = [
     {
       question: "Who wrote the Harry Potter Series?",
@@ -61,6 +66,8 @@ $(document).ready(function () {
       image: "assets/images/spell.jpg",
     }];
 
+  var timer;
+
   var game = {
       questions: questions,
       currentQuestion: 0,
@@ -91,14 +98,20 @@ $(document).ready(function () {
       results: function(){
 
       },
-      clicked: function(){
+      clicked: function(e){
+            clearInterval(timer);
+            if($(e.target).data("name")==questions[game.currentQuestion].correctAnswer){
+                game.answeredCorrectly();
+            } else {
+              game.answeredIncorrectly();
+            }
 
       },
       answeredCorrectly: function(){
-
+          console.log("you got it");
       },
       answeredIncorrectly: function(){
-
+          console.log("wrong");
       },
       reset: function(){
 
