@@ -4,7 +4,7 @@ html {
   margin: 0;
 }
 
-.bg {
+.wrapper {
   /* The image used */
   background-image: url("../images/hgexpress.jpg");
 
@@ -79,9 +79,9 @@ h1 {
 
 .btn:hover {
   border-color: black;
-}
+} 
 
-#question-container {
+ #question-container {
   width: 20%;
   border-radius: 5px;
   padding: 10px;
@@ -96,4 +96,4 @@ h1 {
 
 .hide {
   display: none;
-}
+} 

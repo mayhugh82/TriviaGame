@@ -3,7 +3,8 @@ $(document).ready(function () {
   //game starts when start button clicked
   $("#start").on("click", function () {
     $("#start").remove();
-    
+    game.loadQuestion();
+  })
   var questions = [
     {
       question: "Who wrote the Harry Potter Series?",
@@ -58,8 +59,7 @@ $(document).ready(function () {
       answers: ["Abracadabra", "Wingardium Leviosa", "Poof", "Lorem ipsum"],
       correctAnswer: "JK Rowling",
       image: "assets/images/spell.jpg",
-    },
-  ];
+    }];
 
   var game = {
       questions: questions,
@@ -68,32 +68,41 @@ $(document).ready(function () {
       correct: 0,
       incorrect: 0,
       countdown: function(){
-
-      },
+           game.counter--;
+          $('#counter').html(game.counter);
+          if(game.counter <=0){
+          console.log("TIME UP!");
+          game.timeUp();
+          }
+        },
       loadQuestion: function(){
-
-      };
+           timer = setInterval(game.countdown,1000);
+          $('#subwrapper').html('<h2>'+questions[game.currentQuestion].question+'</h2>');
+           for(var i=0;i<questions[game.currentQuestion].answers.length;i++){
+            $('#subwrapper').append('<button class="answer-button" id="button-'+i+'" data-name="'+questions[game.currentQuestion].answers[i]+'">'+questions[game.currentQuestion].answers[i]+'</button>');
+           }
+      },
       nextQuestion: function(){
 
-      };
+      },
       timeUp: function(){
 
-      };
+      },
       results: function(){
 
-      };
+      },
       clicked: function(){
 
-      };
+      },
       answeredCorrectly: function(){
 
-      };
+      },
       answeredIncorrectly: function(){
 
-      };
+      },
       reset: function(){
-        
+
       }
     }
 
-  }
+});
