@@ -9,6 +9,10 @@ $(document).ready(function () {
     game.clicked(e);
   });
 
+  $(document).on("click", "#reset", function (e) {
+    game.reset();
+  });
+
   var questions = [
     {
       question: "Who wrote the Harry Potter Series?",
@@ -74,6 +78,7 @@ $(document).ready(function () {
     counter: 30,
     correct: 0,
     incorrect: 0,
+    unanswered: 0,
     countdown: function () {
       game.counter--;
       $("#counter").html(game.counter);
@@ -107,6 +112,7 @@ $(document).ready(function () {
     },
     timeUp: function () {
       clearInterval(timer);
+      game.unanswered++;
       $("#subwrapper").html(
         "<h2>OUT OF TIME! Where's Hermione's time turner when you need it?!</h2>"
       );
@@ -121,7 +127,14 @@ $(document).ready(function () {
         setTimeout(game.nextQuestion, 5 * 1000);
       }
     },
-    results: function () {},
+    results: function () {
+        clearInterval(timer);
+        $('#subwrapper').html("<h2>MISCHIEF MANAGED!</h2>");
+        $('#subwrapper').append("<h3>Correct: " +game.correct+"</h3>");
+        $("#subwrapper").append("<h3>Incorrect: " + game.incorrect+"</h3>");
+        $("#subwrapper").append("<h3>Unanswered: " + game.unanswered+ "</h3>");
+        $("#subwrapper").append("<button id='reset'>RESET</button>");
+    },
     clicked: function (e) {
       clearInterval(timer);
       if (
@@ -160,6 +173,13 @@ $(document).ready(function () {
         setTimeout(game.nextQuestion, 5 * 1000);
       }
     },
-    reset: function () {},
-  };
+    reset: function () {
+        game.currentQuestion = 0;
+        game.counter = 0;
+        game. correct = 0;
+        game.incorrect = 0;
+        game.unanswered = 0;
+        game.loadQuestion();
+    }
+  }
 });
