@@ -26,11 +26,11 @@ img {
 }
 
 .answerImage {
-  margin-top: 15%;
-  margin-left: 15%;
+  margin-top: 20%;
+  margin-left: 10%;
   height: 200px;
   width: 300px;
-}
+ }
 
 h1 {
   position: absolute;
