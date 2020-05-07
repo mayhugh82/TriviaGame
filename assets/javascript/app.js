@@ -75,7 +75,7 @@ $(document).ready(function () {
   var game = {
     questions: questions,
     currentQuestion: 0,
-    counter: 5,
+    counter: 30,
     correct: 0,
     incorrect: 0,
     unanswered: 0,
@@ -187,8 +187,9 @@ $(document).ready(function () {
         game.loadQuestion();
     },
     loadImage: function() {
-    var answerImg = $("<img>")
+    var answerImg = $("<img class='answerImage'>")
     answerImg.attr("src", questions[game.currentQuestion].image);
+    // answerImg.css("margin-top", "15%");
     return answerImg;
     }
   }
