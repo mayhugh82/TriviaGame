@@ -43,12 +43,12 @@ h1 {
 #start, #reset {
   position: absolute;
   top: 30%;
-  left: 20%;
+  left: 18%;
   z-index: 1;
   font-family: "HarryP", "Times New Roman", Times, serif;
   font-size: 80px;
   color: rgba(124, 13, 13, 0.76);
-  padding: 10px 50px;
+  padding: 10px 40px;
   background-color: rgba(206, 153, 7, 0.726);
   border-radius: 12px;
   border-color: rgba(124, 13, 13, 0.76);
@@ -67,9 +67,9 @@ h1 {
   border-color: black;
   background-color: transparent;
   font-family: "HarryP", "Times New Roman", Times, serif;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
-   box-shadow: 0 0 10px 2px;
+  box-shadow: 0 0 10px 2px;
 }
 
 

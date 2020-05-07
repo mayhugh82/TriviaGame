@@ -121,7 +121,7 @@ $(document).ready(function () {
         "<h3>The Correct Answer Was: " +
           questions[game.currentQuestion].correctAnswer +
           "</h3>"
-      );
+      ).append(this.loadImage());
       if (game.currentQuestion === questions.length - 1) {
         setTimeout(game.results, 5 * 1000);
       } else {
@@ -151,7 +151,9 @@ $(document).ready(function () {
       console.log("you got it");
       clearInterval(timer);
       game.correct++;
-      $("#subwrapper").html("<h2>YOU GOT IT! 1 Point for GRYFFINDOR!</h2>");
+      $("#subwrapper")
+        .html("<h2>YOU GOT IT! 1 Point for GRYFFINDOR!</h2>")
+        .append(this.loadImage());
       if (game.currentQuestion === questions.length - 1) {
         setTimeout(game.results, 5 * 1000);
       } else {
@@ -162,7 +164,9 @@ $(document).ready(function () {
       console.log("wrong");
       clearInterval(timer);
       game.incorrect++;
-      $("#subwrapper").html("<h2>WRONG! You must be a MUGGLE!</h2>");
+      $("#subwrapper")
+        .html("<h2>WRONG! You must be a MUGGLE!</h2>")
+        .append(this.loadImage());
       $("#subwrapper").append(
         "<h3>The Correct Answer Was: " +
           questions[game.currentQuestion].correctAnswer +
@@ -181,6 +185,11 @@ $(document).ready(function () {
         game.incorrect = 0;
         game.unanswered = 0;
         game.loadQuestion();
+    },
+    loadImage: function() {
+    var answerImg = $("<img>")
+    answerImg.attr("src", questions[game.currentQuestion].image);
+    return answerImg;
     }
   }
 });
