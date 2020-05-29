@@ -22,9 +22,9 @@ Do you know your Harry Potter Trivia?
 
 ### Attached to Portfolio
 
-This link was attacht to the Trivia Image on my Portfolio - [ResponsivePortfolio] (https://mayhugh82.github.io/Responsive-Portfolio/portfolio.html)
+This link was attached to the Trivia Image on my Portfolio - [DianaPortfolio](https://mayhugh82.github.io/DianaPortfolio/)
 
 ## Authors
 
-* **Diana Mayhugh** - *Initial work* - [HarryPotterTriviaGame](https://mayhugh82.github.io/TriviaGame/)
+* **Diana Mayhugh** - [HarryPotterTriviaGame](https://mayhugh82.github.io/TriviaGame/)
 * With assistance from my tutor **Paolo Razon**
